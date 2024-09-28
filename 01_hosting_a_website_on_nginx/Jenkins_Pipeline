@@ -1,0 +1,70 @@
+pipeline{
+    agent any
+    
+        stages{
+            stage('git clone'){
+                steps{
+                    git 'https://github.com/yadnesh-p/project.git' 
+                    echo "repository cloning successful "
+                }
+                
+            }
+            
+            stage ('Docker build,push and run'){
+                steps{
+                    script{
+                        withCredentials(
+                            [usernamePassword(credentialsId:'dockerhub-cred',passwordVariable:'Password',usernameVariable:'Username')]){
+                            docker.withRegistry('https://registry.hub.docker.com/yadup007/project_repo','dockerhub-cred'){
+								
+								echo "Building the image"
+								dockerImage = docker.build("$Username/project_repo:my-nginx-webapp.v$BUILD_NUMBER",'01_hosting_a_website_on_nginx/')
+								echo 'Build is successful'
+								
+								echo 'Pushing image to the repository'
+								dockerImage.push()
+								echo 'Successfully Pushed'
+								
+								echo "Running the container"
+								dockerImage.run('--name my-nginx-web-container-' + BUILD_NUMBER + ' -p 8080:80')
+								echo "Container started at port 8080"
+								
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            
+            stage('Test the Container'){
+                steps{
+                    script{
+                        echo "Testing"
+                        sh 'pwd'
+                        sh '01_hosting_a_website_on_nginx/TestCases.sh'
+                    }
+                }
+            }
+                            
+			stage('Stop and Delete'){
+			    steps{
+			        script{
+			            withCredentials(
+			                [usernamePassword(credentialsId:'dockerhub-cred',passwordVariable:'Password',usernameVariable:'Username')]){
+    			            docker.withRegistry('https://registry.hub.docker.com/yadup007/project_repo','dockerhub-cred'){
+    			            echo "Stopping the Container"
+    			            sh 'docker stop my-nginx-web-container-' + BUILD_NUMBER
+        			        echo "Container stopped"
+        			        
+        			        echo "Delete all stopped containers"
+        			        sh 'docker rm my-nginx-web-container-' + BUILD_NUMBER
+        			        echo "Container deleted"
+			                }
+			                }
+			                
+			        }
+			        
+			    }
+			}
+  }   
+}
