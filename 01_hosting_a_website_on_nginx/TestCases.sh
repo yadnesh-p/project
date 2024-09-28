@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Hello World"
-a=$(docker ps | wc -l)
+#a = $(docker ps | wc -l)
 if [ $a -gt 1 ]
 then
         echo "passed"
