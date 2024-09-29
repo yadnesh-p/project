@@ -5,7 +5,7 @@ then
         echo "First Test Case passed"
 else
         echo "First test case failed kindly check if the container is running"
-        exit
+        exit 0
 fi
 
 curl http://127.0.0.1:8080 -s > /dev/null
@@ -14,5 +14,5 @@ then
         echo "Second Test Case passed"
 else
         echo "Second test case failed kindly check "
-        exit
+        exit 0
 fi
