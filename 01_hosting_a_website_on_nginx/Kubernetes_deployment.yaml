@@ -1,3 +1,11 @@
+#############################################################################
+## Description: This is a yaml file for nginx-web app deployment 
+## on K8s cluster using the docker image which is created
+## by the Dockerfile on the dockerhub 
+##
+## CREATED BY: YADNESH PURAV
+## CREATION DATE: 01 OCTOBER 2024
+#############################################################################
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,3 +26,4 @@ spec:
   selector:
     matchLabels:
       app: my-app
+  replicas: 3
