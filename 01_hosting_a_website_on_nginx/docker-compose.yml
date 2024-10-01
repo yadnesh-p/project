@@ -1,3 +1,11 @@
+#############################################################################
+## Description: This is a docker-compose yaml file which
+## will buld the image from the dockerfile and start the
+## container. This will be used for multi-container purpose
+##
+## CREATED BY: YADNESH PURAV
+## CREATION DATE: 01 OCTOBER 2024
+#############################################################################
 services:
   application:
     build: .
