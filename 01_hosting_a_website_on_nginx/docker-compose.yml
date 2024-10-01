@@ -1,0 +1,8 @@
+services:
+  application:
+    build: .
+    image: my-nginx-website
+    environment:
+      - Name = Stage
+    ports:
+      - 8080:80
