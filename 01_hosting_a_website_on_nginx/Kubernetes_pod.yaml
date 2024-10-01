@@ -1,3 +1,11 @@
+#############################################################################
+## Description: This is a yaml file for nginx-web app pod creation 
+## on K8s cluster using the docker image which is created
+## by the Dockerfile on the dockerhub 
+##
+## CREATED BY: YADNESH PURAV
+## CREATION DATE: 01 OCTOBER 2024
+#############################################################################
 apiVersion: v1
 kind: Pod
 metadata:
