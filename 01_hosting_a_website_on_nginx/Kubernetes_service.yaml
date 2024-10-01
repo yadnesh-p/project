@@ -1,3 +1,11 @@
+#############################################################################
+## Description: This is a yaml file for nginx-web app service
+## creation to get access to the web page created through URL
+## 
+##
+## CREATED BY: YADNESH PURAV
+## CREATION DATE: 01 OCTOBER 2024
+#############################################################################
 apiVersion: v1
 kind: Service
 metadata:
