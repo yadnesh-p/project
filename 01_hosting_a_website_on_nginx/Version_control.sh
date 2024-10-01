@@ -1,5 +1,5 @@
 #############################################################################
-## Description: This is a file to check and edit the 
+## Description: This is a script to check and edit the 
 ## version of the yaml files to pull the latest image 
 ## from dockerhub
 ##
