@@ -1,3 +1,16 @@
+/////////////////////////////////////////////////////////////////////////////
+// Description: This is an automated pipeline to build,run, test 
+// the containerized web application and finally stop and delete
+// the container after pushing the image to dockerhub
+//
+//
+// CREATED BY: YADNESH PURAV
+// CREATION DATE: 29 SEPTEMBER 2024
+//
+// VERSION      DATE        AUTHOR      UPDATE
+//  0.1     01-10-2024        YP     Added k8s YAML file creation
+/////////////////////////////////////////////////////////////////////////////
+
 pipeline{
     agent any
     
@@ -39,13 +52,26 @@ pipeline{
             stage('Test the Container'){
                 steps{
                     script{
-                        echo "Testing"
+                        echo "Testing The website"
                         sh 'pwd'
                         sh '01_hosting_a_website_on_nginx/TestCases.sh'
                     }
                 }
             }
-                            
+            
+
+//v0.1 START
+            
+            stage('k8s file creation'){
+                steps{
+                    script{
+                        echo "Creating the file with the template"
+                        sh '01_hosting_a_website_on_nginx/Version_control.sh'
+                    }
+                }
+            }
+
+//v0.1 END                            
 			stage('Stop and Delete'){
 			    steps{
 			        script{
@@ -66,5 +92,6 @@ pipeline{
 			        
 			    }
 			}
-  }   
+			
+        }   
 }
