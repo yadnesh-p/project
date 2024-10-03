@@ -1,0 +1,34 @@
+#############################################################################
+## Description: This is a docker-compose file to pull the sql 
+## image from dockerhub and setting the root credentials for 
+## sql conection
+##
+##
+## CREATED BY: YADNESH PURAV
+## CREATION DATE: 02 OCTOBER 2024
+## 
+##  VERSION      DATE        AUTHOR      UPDATE
+##    0.1     03-10-2024       YP     Adding env file for secrets
+#############################################################################
+
+
+services:
+  db:
+    image: mysql:latest
+
+##v0.1 START
+    env_file:
+      - .secret.env
+
+##v0.1 END
+#    environment:
+#      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/my-root-password  
+    ports:
+    - "3300:3307"
+#    secrets:
+#    - my-root-password 
+
+#secrets:
+#  my-root-password:
+#    file: ./.secret.txt
+
