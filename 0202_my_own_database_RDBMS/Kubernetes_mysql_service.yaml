@@ -1,0 +1,20 @@
+#############################################################################
+## Description: This is a service yaml file to get
+## the sql connection from the deployment file
+##
+## CREATED BY: YADNESH PURAV
+## CREATION DATE: 04 OCTOBER 2024
+##
+##  VERSION      DATE        AUTHOR      UPDATE
+##############################################################################
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: mysql-service
+spec:
+    selector:
+        type: db
+    ports:
+    - port: 3300
+      targetPort: 3306

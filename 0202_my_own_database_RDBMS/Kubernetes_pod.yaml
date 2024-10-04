@@ -1,0 +1,23 @@
+#############################################################################
+## Description: This is apod creation for single 
+## sql service pod Deployment
+##
+## CREATED BY: YADNESH PURAV
+## CREATION DATE: 04 OCTOBER 2024
+##
+##  VERSION      DATE        AUTHOR      UPDATE
+#############################################################################
+
+apiVersion: v1
+kind: Pod 
+metadata: 
+  name: mysql-pod
+  labels:
+    type: db 
+spec:
+  containers:
+    name: mysql-pod-container
+
+    image: yadup007/project_repo:mysql-db-connectv7
+    ports:
+    - containerPort: 3306

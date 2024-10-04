@@ -1,0 +1,32 @@
+#############################################################################
+## Description: This is a Deployment file for mysql
+## deployment on k8s
+## 
+##
+## CREATED BY: YADNESH PURAV
+## CREATION DATE: 01 OCTOBER 2024
+##
+##  VERSION      DATE        AUTHOR      UPDATE
+#############################################################################
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-server
+  labels:
+    type: db
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: db
+  template:
+    metadata:
+      labels:
+        type: db
+    spec:
+      containers:
+      - name: mysql-server
+        ports:
+        - containerPort: 3306
+        image: yadup007/project_repo:mysql-db-connectv7
