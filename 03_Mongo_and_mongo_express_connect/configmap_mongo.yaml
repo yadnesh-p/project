@@ -1,0 +1,16 @@
+#############################################################################
+## Description: This is a ConfigMap to store the 
+## centralized data for db-url which will be used by 
+## external service for connecting to mongo-db internally 
+##
+## CREATED BY: YADNESH PURAV
+## CREATION DATE: 06 OCTOBER 2024
+##
+##  VERSION      DATE        AUTHOR      UPDATE
+#############################################################################
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-configmap
+data:
+  db-url: mongo-service
