@@ -1,0 +1,27 @@
+#############################################################################
+## Description: This is a yaml file for nginx-web app ingress
+## creation to get access to the web page created through service
+## name
+## 
+##
+## CREATED BY: YADNESH PURAV
+## CREATION DATE: 17 OCTOBER 2024
+#############################################################################
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-nginx-service-ingress
+  labels:
+    app: my-app 
+spec:
+  rules:
+  - host: my-app-service.com 
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: my-nginx-service
+            port: 
+              number: 8080
