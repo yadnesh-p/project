@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: my-nginx-webapp
-        image: yadup007/project_repo:my-nginx-webapp.v83 
+        image: yadup007/project_repo:my-nginx-webapp.v93 
         ports:
         - containerPort: 80
   selector:
